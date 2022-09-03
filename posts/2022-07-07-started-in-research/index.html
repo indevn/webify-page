@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chinagraph2020笔记：真实感渲染科研入门 | indevn</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/posts/">Posts</a></li>
+      
+      <li><a href="https://github.com/indevn/">GitHub</a></li>
+      
+      <li><a href="/index.xml">Subscribe</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">Chinagraph2020笔记：真实感渲染科研入门</span></h1>
+<h2 class="author">Lecture by Lingqi Yan</h2>
+<h2 class="date">2022/07/07</h2>
+</div>
+
+<main>
+<h2 id="introduction">Introduction</h2>
+<p>渲染的过程：计算光线传播的过程</p>
+<p>渲染的科研，主要集中于真实感Realism和速度Speed。</p>
+<p>渲染在科研上尚未解决的问题：</p>
+<ul>
+<li>Tradeoff is costly</li>
+<li>Simplification is far from easy（可参考卡通渲染等）</li>
+</ul>
+<h2 id="prepared-knowledge">Prepared Knowledge</h2>
+<ol>
+<li>
+<p>Real-time/Offline graphics pipeline</p>
+</li>
+<li>
+<p>Texture Mapping 定义和记录逐点属性</p>
+</li>
+<li>
+<p>Bidirectional Reflectance Distribution Function, BRDF</p>
+</li>
+<li>
+<p>采样理论（PDF采样）与蒙特卡洛积分</p>
+<p>实际基于大数定律，实验结果很多的时候将会接近期望值。可以使用置信区间进行评估，也可以使用期望验证无偏性（期望值与实际相符合）。</p>
+<ol>
+<li>
+<p>采样过程的优化：多重重要性采样</p>
+</li>
+<li>
+<p>如何进行取样？引入<strong>Discrepancy</strong>:</p>
+<p>how uniformly distributed a sequence of point is $D_n^<em>=D_n^</em>(x_1,&hellip;,x_n)$</p>
+<p>用于描述实际和理论的差异，则引出Low Discrepancy Sequences 低差异化序列。</p>
+<ul>
+<li>Pros：Infinite, …</li>
+<li>Cons: Patterns, degeneration in high dimentions</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>直接光照和全局光照</p>
+<p>全局光照的获得：路径追踪 Path Tracing</p>
+<ul>
+<li>Matter: 对于定义在半球的积分进行采样</li>
+<li>一般的求解思路是递归的求解，如今则更多使用更高维的概念来描述Path（光线每弹射一次则增高两个维度，所有Path的弹射区间被称为“Path Space”）</li>
+</ul>
+</li>
+<li>
+<p>材质 Materials</p>
+<ul>
+<li>
+<p>Microfacet Material</p>
+<ul>
+<li>Normal Distribution Function, NDF 描述物体表面的复杂特征</li>
+</ul>
+</li>
+<li>
+<p>Rendering Materials</p>
+<ol>
+<li>Evaluation 估计，BRDF的值是多少</li>
+<li>Sampling 采样 如何对其做重要性采样</li>
+<li>PDF of Samping 假设知道入射光，需要用其他方法进行采样，我们需要首先知道其PDF</li>
+</ol>
+</li>
+<li>
+<p>Appearance Modeling and Synthesis</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="state-of-the-art-rendering-research">State of the art rendering research</h2>
+<p>Basic Ideas:</p>
+<ul>
+<li>Appearence Modeling</li>
+<li>Light Transport</li>
+<li>Representation(e.g. <u>describe</u> ambient light better)</li>
+<li>Approximation</li>
+</ul>
+<p><strong>Offline Rendering</strong></p>
+<ul>
+<li>
+<p>Light transport</p>
+<p><em>Light Transport Simulation with Vertex Connection and Merging</em></p>
+<p><em>Path Guiding in Production</em></p>
+</li>
+<li>
+<p>Material modeling</p>
+<p>e.g. Glossary可以由无数微小表面的反射进行呈现，我们可以做到很细致的效果</p>
+<p><em>A Efficient and Practical Near and Far Field Fur Reflection Model</em></p>
+</li>
+<li>
+<p>Sampling</p>
+</li>
+<li>
+<p>Denoising</p>
+<p>KPCN: Kernel-Predicting Convolutional Networks for Denoising Monte Carlo Renderings</p>
+</li>
+</ul>
+<p><strong>Real-time Rendering</strong></p>
+<ul>
+<li>
+<p>PRT: 预计算</p>
+</li>
+<li>
+<p>RTX：实时光线追踪</p>
+<ul>
+<li>
+<p>Light Transport</p>
+<p><em>Spatiotemporal reservoir resampling for real-time ray tracing with dynamic direct lighting</em></p>
+<p><a href="https://www.cnblogs.com/Liuwq/p/15974079.html">https://www.cnblogs.com/Liuwq/p/15974079.html</a></p>
+</li>
+<li>
+<p>Denoising</p>
+<p>代表性的两种方法：传统方法和深度学习方法</p>
+<p>（传统方法，更快）<em>SVGF: Spatiotemporal Variance-Guided Filtering: Real-Time Reconstruction for Path-Traced Global Illumination</em></p>
+<p>（深度学习方法，需要跑一遍神经网络）<em>Interactive Reconstruction of Monte Carlo Image Sequences using a Recurrent Denoising Autoencoder</em></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Interdisciplinary</strong></p>
+<ul>
+<li>Differentiable Rendering 可微渲染</li>
+<li>Measurement&amp;Construction</li>
+<li>Neural Rendering (actually not rendering)</li>
+</ul>
+<h2 id="tools-chain">Tools chain</h2>
+<p><strong>Renderer</strong>:</p>
+<p>An integration of Light transport algorithms, Materials, Scene handler</p>
+<p>Mitsuba 0.5.0/0.6.0 is in general a good choice; PBRT is also good.</p>
+<p><strong>Ray Tracer:</strong></p>
+<p>(CPU, Intel’s) Embree，尽量在CPU中完成</p>
+<p>(GPU) OptiX <em>(cross platform)</em>, DXR <em>(DirectX Raytracing, Windows Only)</em></p>
+<p><em>Falcor is a good framework</em></p>
+<p>对于光栅化的实时渲染研究，可以自己写一套（使用OpenGL/DirectX/Vulkan），其中如果使用OpenGL，可以尝试imGUI或NanoGUI，提供了基本的GUI。</p>
+<p><strong>Other tools</strong></p>
+<ul>
+<li>To view HDR文件(.exr) ： Tev</li>
+<li>To do fastest GPU inference：NVIDIA’s TensorRT</li>
+</ul>
+<h2 id="resources">Resources</h2>
+<p><strong>Scenes</strong>:</p>
+<p>同时可以尽量学习使用游戏引擎并使用其shaders。为了使用场景，尽量学习3D软件如Blender，Maya等，并且购买模型并将其导成自己渲染器的格式。同时我们也能使用一些免费的渲染库：</p>
+<ul>
+<li>The Stanford 3D Scanning Repository</li>
+<li>Benedikt Bitterli’s rendering resources</li>
+<li>NVIDIA’s ORCA</li>
+</ul>
+<p>经典算法实现：</p>
+<p>工业界不允许共享代码，渲染科研人员往往不倾向于共享代码。非常经典的算法包含在不同的渲染器当中。</p>
+<h2 id="main-rendering-venus">Main Rendering Venus</h2>
+<p>常见会议：Siggraph, Siggraph Asia, EG, EGSR, PG,HPG,I3D</p>
+<p>期刊：ToG, CGF, TVCG(only in China)</p>
+<h2 id="training">Training</h2>
+<p>代码训练方案：</p>
+<ul>
+<li>
+<p>Offline</p>
+<ul>
+<li>
+<p>Write a path tracer from scratch using Intel’s Embree</p>
+</li>
+<li>
+<p>引入多重重要性采样</p>
+</li>
+<li>
+<p>支持微表面材质</p>
+</li>
+<li>
+<p>实现正确的BDPT(Bidirectional Path Tracing)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Real-Time</p>
+<ul>
+<li>Write C++ OpenGL wrapper</li>
+<li>支持arcball support，对其添加软阴影VSSM（Shader）</li>
+<li>在OpenGL程序中支持Optix</li>
+<li>写一个实时光线追踪，用OpenGL做Primary，后续用Optix</li>
+<li>添加降噪（按SVGF）</li>
+</ul>
+</li>
+</ul>
+<h2 id="future-thoughts">Future Thoughts</h2>
+<p><strong>Topic</strong>:</p>
+<ul>
+<li>
+<p>“Frankenstein” type 缝合怪</p>
+<p>e.g. Vertex Connection and Merging (A+B)</p>
+</li>
+<li>
+<p>“Nature porter” type 跨领域的方法迁移</p>
+</li>
+<li>
+<p>“Dig the grave” type 解决过去方法/条件不能解决的理论</p>
+</li>
+<li>
+<p>“Deep replacement” type</p>
+<p>e.g. Neural Importance Sampling</p>
+</li>
+<li>
+<p>“Add prefix” type</p>
+<p>e.g. Anisotropic Spherical Gaussains</p>
+</li>
+</ul>
+<p>[HARD] Never the best, but the first</p>
+<p><strong>Future</strong>:</p>
+<p>Geometry&amp;Appearance</p>
+<p>Procedural Rendering 实时生成&amp;渲染细节</p>
+<p>VR/AR需要差分渲染Differentiable Rendering</p>
+
+</main>
+
+  <footer>
+  <script defer src="//yihui.org/js/math-code.js"></script>
+<script defer src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script defer src="//yihui.org/js/center-img.js"></script>
+
+  
+  <hr/>
+  © <a href="https://indevn.com">indevn</a> 2016 &ndash; 2022 | <a href="https://github.com/indevn">Github</a>
+  
+  </footer>
+  </body>
+</html>
+

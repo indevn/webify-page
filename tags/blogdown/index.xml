@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blogdown on indevn</title>
+    <link>/tags/blogdown/</link>
+    <description>Recent content in blogdown on indevn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 21 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/blogdown/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Microfacet模型基础</title>
+      <link>/posts/2022-07-21-primary-microfacet/</link>
+      <pubDate>Thu, 21 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2022-07-21-primary-microfacet/</guid>
+      <description>Microfacet 微表面模型（Microfacet Material）是更接近于物理的材质描述，相比于Lambertian模型、Phong模型，它可以用来描述更复杂的场景。
+我们认为广表面（Macrosurface） 是平坦且粗糙的，但是微表面（Microsurface）是凹凸不平但是光滑的（每一个小的面都是光滑平坦的）。粗糙的广表面是由一个个微表面组成，微表面是完美的平面，其朝向不同。
+对于微表面模型，整体的光线反射情况应当是所有微表面反射情况的总和。从近处看是几何，从远处看就是一种材质。
+广表面的粗糙程度取决于微表面的法线的方差，微表面法线方差越大，广表面越粗糙，表面取向与整个宏观表面取向的偏离更强，反射越模糊，整体越呈现为diffuse的效果。
+对于微表面的不同材质，可以考虑通过微表面法线分布进行表示：(Microfacet Cook-Torrance BRDF) $$ f(i,o)=\frac{F(i,h)G(i,o,h)D(h)}{4(n,i)(n,o)} $$ 其中$$F(i,h)$$即菲涅尔项Fresnel Term，$$G(i,o,h)$$是几何项 Shadowing-masking term，，$$D(h)$$是沿着半程向量的法线分布。
+Fresnel Term: F 菲涅尔项告诉了我们不同入射角度的情况下反射的光线的强度，主要表现在grazing angle时光的反射率会增加。
+宏观菲涅尔现象的可以理解为微观微平面菲涅尔效应的平均值，这也为Microfacet模型可以呈现出菲涅尔现象提供了理论基础。它也阐释了对于不同材质的微表面模型，菲涅尔现象的强弱也是不一样的，这主要取决于法线分布。
+麦克斯韦方程组描述的是折射率变化时光的行为，菲涅尔方程实际上是麦克斯韦方程组的特解。对于不同的材质参数，有不同的反射率：
+近似估计
+由$F(\omega_o)$ 菲涅尔项进行描述。给定入射光线角度和材质信息，求反射的比例（水面垂直的看通透，斜看如镜子）
+我们称入射角为0°时的菲涅尔反射率为$F_0$，按Schlick对F的近似估计： $$ F_0=(\frac{\eta_\lambda-1}{\eta_\lambda+1})^2\ F_{Schlick}=F_0+(1-F_0)(1-cos\theta_d)^5 $$
+Normal Distribution Function: D 对于微表面模型，最重要的实际是微表面自身的法线分布NDF（Normal Distribution Function, [1/steradians]）。它在统计上是微观几何表面区域上的微平面表面法线的统计分布；在空间上是法线的密度函数，在微平面法线更可能指向的方向上具有更高的值。
+NDF在球面的积分是微平面的面积，其对于某特定视图方向上的投影满足归一化。
+对于任何一种材质，我们使用法线分布来描述其材质。如果是光滑glossy的表面，那么法线分布比较集中；否则，法线会分布在四处，呈现出类似diffuse的效果。
+在图像上，NDF基本都是$D(m)$以中心为峰值，随着$|\theta_m|$的增大，向外不断衰减。NDF本身是定义在半球面上的，我们希望将它显示在圆上，则按projected solid angle，自上向下俯视观察。
+数值约束
+在数值上，我们通常将NDF投影到宏观表平面macrosurface上进行讨论，即讨论$D(m)( n\cdot m)$，我们可以注意到一个基于物理的NDF需要满足这些约束：（$\Theta$通常表示球体，$\Omega$表示半球，模型通常在高度场heightfields中考虑）
+归一化：在球体上的积分为1 $$ \int _{m\in\Theta} D(m)(n\cdot m)dm=1 $$
+在垂直于任何视图方向v的平面上的投影是相等的（并且数值上为投影面积且S≥0） $$ \int _{m\in\Theta} D( m)( v\cdot m)d m= v \cdot n $$ 我们观察到在投影过程中会有很多微表面的正负抵消，实际上我们只需要考察最接近相机的微平面，也即得到下面一个推论（它和这一条是等价的）：
+可见微平面的投影面积之和等于宏观表面的投影面积
+我们定义遮蔽函数$G_1( m, v)$描述沿着视图向量v可见的具有法线m的微平面的比率，则$G_1( m, v)D( m)$是和$D( m)$等价的描述，都表示可见法线的分布，则有： $$ \int _{m\in\Theta} G_1( m, v)D( m)( v\cdot m)^+d m= v \cdot n $$ 基本性质</description>
+    </item>
+    
+    <item>
+      <title>Chinagraph2020笔记：真实感渲染科研入门</title>
+      <link>/posts/2022-07-07-started-in-research/</link>
+      <pubDate>Thu, 07 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2022-07-07-started-in-research/</guid>
+      <description>Introduction 渲染的过程：计算光线传播的过程
+渲染的科研，主要集中于真实感Realism和速度Speed。
+渲染在科研上尚未解决的问题：
+Tradeoff is costly Simplification is far from easy（可参考卡通渲染等） Prepared Knowledge Real-time/Offline graphics pipeline
+Texture Mapping 定义和记录逐点属性
+Bidirectional Reflectance Distribution Function, BRDF
+采样理论（PDF采样）与蒙特卡洛积分
+实际基于大数定律，实验结果很多的时候将会接近期望值。可以使用置信区间进行评估，也可以使用期望验证无偏性（期望值与实际相符合）。
+采样过程的优化：多重重要性采样
+如何进行取样？引入Discrepancy:
+how uniformly distributed a sequence of point is $D_n^=D_n^(x_1,&amp;hellip;,x_n)$
+用于描述实际和理论的差异，则引出Low Discrepancy Sequences 低差异化序列。
+Pros：Infinite, … Cons: Patterns, degeneration in high dimentions 直接光照和全局光照
+全局光照的获得：路径追踪 Path Tracing
+Matter: 对于定义在半球的积分进行采样 一般的求解思路是递归的求解，如今则更多使用更高维的概念来描述Path（光线每弹射一次则增高两个维度，所有Path的弹射区间被称为“Path Space”） 材质 Materials
+Microfacet Material
+Normal Distribution Function, NDF 描述物体表面的复杂特征 Rendering Materials
+Evaluation 估计，BRDF的值是多少 Sampling 采样 如何对其做重要性采样 PDF of Samping 假设知道入射光，需要用其他方法进行采样，我们需要首先知道其PDF Appearance Modeling and Synthesis</description>
+    </item>
+    
+  </channel>
+</rss>
