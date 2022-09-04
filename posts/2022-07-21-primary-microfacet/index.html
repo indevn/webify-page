@@ -15,6 +15,8 @@
       
       <li><a href="/">Home</a></li>
       
+      <li><a href="/about/">About</a></li>
+      
       <li><a href="/posts/">Posts</a></li>
       
       <li><a href="https://github.com/indevn/">GitHub</a></li>
@@ -32,6 +34,11 @@
 </div>
 
 <main>
+<p>目前的公式渲染似乎出了些奇怪的问题。这个笔记原本是对浅墨PBR白皮书、闫老师GAMES202、Heitz14年的文章的总结，这里推荐一下我当时参考的内容：</p>
+<p><a href="https://github.com/QianMo/PBR-White-Paper">PBR-White-Paper</a></p>
+<p><a href="https://jcgt.org/published/0003/02/03/paper.pdf">[Hetiz14]Understanding the Masking-Shadowing Function in Microfacet-Based BRDF</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/92321672">理解微表面BRDF中的遮挡阴影函数</a></p>
+<p>Heitz14的understanding paper是很好的总结，写的也很浅显易懂，推荐必读。</p>
 <h1 id="microfacet">Microfacet</h1>
 <p>微表面模型（Microfacet Material）是更接近于物理的材质描述，相比于Lambertian模型、Phong模型，它可以用来描述更复杂的场景。</p>
 <p>我们认为广表面（Macrosurface） 是平坦且粗糙的，但是微表面（Microsurface）是凹凸不平但是光滑的（每一个小的面都是光滑平坦的）。粗糙的广表面是由一个个微表面组成，微表面是完美的平面，其朝向不同。</p>

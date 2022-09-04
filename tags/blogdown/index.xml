@@ -12,7 +12,12 @@
       <pubDate>Thu, 21 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>/posts/2022-07-21-primary-microfacet/</guid>
-      <description>Microfacet 微表面模型（Microfacet Material）是更接近于物理的材质描述，相比于Lambertian模型、Phong模型，它可以用来描述更复杂的场景。
+      <description>目前的公式渲染似乎出了些奇怪的问题。这个笔记原本是对浅墨PBR白皮书、闫老师GAMES202、Heitz14年的文章的总结，这里推荐一下我当时参考的内容：
+PBR-White-Paper
+[Hetiz14]Understanding the Masking-Shadowing Function in Microfacet-Based BRDF
+理解微表面BRDF中的遮挡阴影函数
+Heitz14的understanding paper是很好的总结，写的也很浅显易懂，推荐必读。
+Microfacet 微表面模型（Microfacet Material）是更接近于物理的材质描述，相比于Lambertian模型、Phong模型，它可以用来描述更复杂的场景。
 我们认为广表面（Macrosurface） 是平坦且粗糙的，但是微表面（Microsurface）是凹凸不平但是光滑的（每一个小的面都是光滑平坦的）。粗糙的广表面是由一个个微表面组成，微表面是完美的平面，其朝向不同。
 对于微表面模型，整体的光线反射情况应当是所有微表面反射情况的总和。从近处看是几何，从远处看就是一种材质。
 广表面的粗糙程度取决于微表面的法线的方差，微表面法线方差越大，广表面越粗糙，表面取向与整个宏观表面取向的偏离更强，反射越模糊，整体越呈现为diffuse的效果。
@@ -30,9 +35,7 @@ NDF在球面的积分是微平面的面积，其对于某特定视图方向上�
 数值约束
 在数值上，我们通常将NDF投影到宏观表平面macrosurface上进行讨论，即讨论$D(m)( n\cdot m)$，我们可以注意到一个基于物理的NDF需要满足这些约束：（$\Theta$通常表示球体，$\Omega$表示半球，模型通常在高度场heightfields中考虑）
 归一化：在球体上的积分为1 $$ \int _{m\in\Theta} D(m)(n\cdot m)dm=1 $$
-在垂直于任何视图方向v的平面上的投影是相等的（并且数值上为投影面积且S≥0） $$ \int _{m\in\Theta} D( m)( v\cdot m)d m= v \cdot n $$ 我们观察到在投影过程中会有很多微表面的正负抵消，实际上我们只需要考察最接近相机的微平面，也即得到下面一个推论（它和这一条是等价的）：
-可见微平面的投影面积之和等于宏观表面的投影面积
-我们定义遮蔽函数$G_1( m, v)$描述沿着视图向量v可见的具有法线m的微平面的比率，则$G_1( m, v)D( m)$是和$D( m)$等价的描述，都表示可见法线的分布，则有： $$ \int _{m\in\Theta} G_1( m, v)D( m)( v\cdot m)^+d m= v \cdot n $$ 基本性质</description>
+在垂直于任何视图方向v的平面上的投影是相等的（并且数值上为投影面积且S≥0） $$ \int _{m\in\Theta} D( m)( v\cdot m)d m= v \cdot n $$ 我们观察到在投影过程中会有很多微表面的正负抵消，实际上我们只需要考察最接近相机的微平面，也即得到下面一个推论（它和这一条是等价的）：</description>
     </item>
     
     <item>
