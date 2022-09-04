@@ -34,11 +34,24 @@
 </div>
 
 <main>
-<p>目前的公式渲染似乎出了些奇怪的问题。这个笔记原本是对浅墨PBR白皮书、闫老师GAMES202、Heitz14年的文章的总结，这里推荐一下我当时参考的内容：</p>
+<p>目前的公式渲染似乎出了些奇怪的问题，可以先看我先前做的<a href="https://wwz.lanzouv.com/iphAx0b0s7yb">PPT: [Heitz14]Microfacet Models</a>（密码：1234）。</p>
+<p>这个笔记原本是对浅墨PBR白皮书、闫老师GAMES202、Heitz14年的文章的总结，这里推荐一下我当时参考的内容：</p>
 <p><a href="https://github.com/QianMo/PBR-White-Paper">PBR-White-Paper</a></p>
 <p><a href="https://jcgt.org/published/0003/02/03/paper.pdf">[Hetiz14]Understanding the Masking-Shadowing Function in Microfacet-Based BRDF</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/92321672">理解微表面BRDF中的遮挡阴影函数</a></p>
 <p>Heitz14的understanding paper是很好的总结，写的也很浅显易懂，推荐必读。</p>
+<p>microfacet模型只是physically based BRDF中的一种，但它也同时是很多后续模型的基础。经过这段时间的学习，我感觉如果要对microfacet模型有了解，那至少需要知道：</p>
+<ul>
+<li>几种常见法线分布及其特性</li>
+<li>用于解决shadowing-masking问题的V-cavity或Smith模型
+<ul>
+<li>基本的形式和推导</li>
+<li>各自的优点和不足</li>
+</ul>
+</li>
+<li>对能量守恒问题的解决</li>
+</ul>
+<p>值得注意的是，作为一个physically based BRDF，互易性和能量守恒是很重要的两点，也是贯穿之后很多模型的评价基准。</p>
 <h1 id="microfacet">Microfacet</h1>
 <p>微表面模型（Microfacet Material）是更接近于物理的材质描述，相比于Lambertian模型、Phong模型，它可以用来描述更复杂的场景。</p>
 <p>我们认为广表面（Macrosurface） 是平坦且粗糙的，但是微表面（Microsurface）是凹凸不平但是光滑的（每一个小的面都是光滑平坦的）。粗糙的广表面是由一个个微表面组成，微表面是完美的平面，其朝向不同。</p>
