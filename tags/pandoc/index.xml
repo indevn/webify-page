@@ -65,5 +65,18 @@ Normal Distribution Function, NDF 描述物体表面的复杂特征 Rendering Ma
 Evaluation 估计，BRDF的值是多少 Sampling 采样 如何对其做重要性采样 PDF of Samping 假设知道入射光，需要用其他方法进行采样，我们需要首先知道其PDF Appearance Modeling and Synthesis</description>
     </item>
     
+    <item>
+      <title>图形收藏夹（awesome-graphic-cn）</title>
+      <link>/posts/2022-02-22-graphic-bookmark/</link>
+      <pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2022-02-22-graphic-bookmark/</guid>
+      <description>这原是我在今年2月建的一个repo：awesome-graphics-cn，旨在维护一个公共的图形学收藏夹。
+奈何这学科博大精深，一方面是没人给这repo contribute（这个是关键），另一方面是由于学科太广内容太多兼之我也刚入门，分类上实在不好维护，后来就处于摆烂状态。
+就当自己的收藏夹好了，按自己的兴趣随便收藏一些觉得有用的内容。
+不得不感慨当初有这时间真的不如做点有价值的事情。
+基本介绍与学习方向 数学在计算机图形学中的应用 by 刘利刚 什么是计算机图形学? by 刘利刚 如何自学《计算机图形学》&amp;amp; C++面向对象编程？ by 刘利刚 有关图形学入门的一些思考·渲染篇 by 探寻可能 关于实时渲染和图形API的一些学习资料收录 科研论文如何想到不错的 idea？ by 王嘉平 真实感图形渲染科研入门笔记：论文推荐 by Zachary 真实感图形渲染科研入门笔记：工具链与参考资料 by Zachary 图形学相关专栏/博客 数字元素之国 Blog of Martin Z He 游戏引擎：物理和动画 （“萌新，从GAMES103开始学”） 物理模拟 （“计算机图形学物理模拟的尝试”） Game-Programmer-Study-Notes by 毛星云 渲染教程框架目录 by May 图形学论文解析与复现（复现Repo） 高级计算机图形学——真实感图像合成 by zhiwei 课程及相关笔记 课程 GAMES系列 科大 暑期课程 王贝贝老师渲染课程 相关笔记 GAMES101 作业问题整理 by b1gm0use 计算机图形学专栏汇总 by Eternity GAMES101、102、104、201、202笔记 Games202 高质量实时渲染课堂笔记 by CarlH3 经典书籍及相关笔记 《Real-Time Rendering 3rd》提炼总结 by 毛星云</description>
+    </item>
+    
   </channel>
 </rss>
