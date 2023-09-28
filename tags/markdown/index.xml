@@ -12,7 +12,7 @@
       <pubDate>Thu, 21 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>/posts/2022-07-21-primary-microfacet/</guid>
-      <description>目前的公式渲染似乎出了些奇怪的问题，可以先看我先前做的PPT: [Heitz14]Microfacet Models（密码：1234）。
+      <description>改公式渲染太痛苦了，可以先看我先前做的PPT: [Heitz14]Microfacet Models（密码：1234）。
 这个笔记原本是对浅墨PBR白皮书、闫老师GAMES202、Heitz14年的文章的总结，这里推荐一下我当时参考的内容：
 PBR-White-Paper
 [Hetiz14]Understanding the Masking-Shadowing Function in Microfacet-Based BRDF
@@ -101,7 +101,7 @@ Monte Carlo based methods</description>
       
       <guid>/posts/2022-02-22-graphic-bookmark/</guid>
       <description>这原是我在今年2月建的一个repo：awesome-graphics-cn，旨在维护一个公共的图形学收藏夹。
-奈何这学科博大精深，一方面是没人给这repo contribute（这个是关键），另一方面是由于学科太广内容太多兼之我也刚入门，分类上实在不好维护，后来就处于摆烂状态。
+奈何这学科博大精深，一方面是没人给这repo contribute，另一方面是由于学科太广内容太多兼之我也刚入门，分类上实在不好维护，后来就处于摆烂状态。
 就当自己的收藏夹好了，按自己的兴趣随便收藏一些觉得有用的内容，努力做成综述形式的成体系化的东西。一步一个脚印，也就当是个人学习的一个记录。
 不得不感慨，当初有这时间真的不如做点有价值的事情。
 基本介绍与学习方向 数学在计算机图形学中的应用 by 刘利刚 什么是计算机图形学? by 刘利刚 如何自学《计算机图形学》&amp;amp; C++面向对象编程？ by 刘利刚 科研论文如何想到不错的 idea？ by 王嘉平 专题资源（专栏/博客为主） 工程综合相关

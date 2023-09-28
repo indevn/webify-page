@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> | indevn | 我的作品分享</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/posts/">Posts</a></li>
+      
+      <li><a href="https://github.com/indevn/">GitHub</a></li>
+      
+      <li><a href="/index.xml">Subscribe</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title"></span></h1>
+
+
+</div>
+
+<main>
+<ol>
+<li>
+<p>为什么要读研</p>
+<ol>
+<li>
+<p>科研：从工程出发</p>
+<p>从大一开始我就一直在思考，我对自己的定位什么样的，我自己要做怎么样的人。</p>
+<p>大一暑假，我学习了UCSB闫令琪教授的GAMES系列图形学课程。图形学的核心在于尽可能真实地在计算机中还原真实世界中的光学表现和物理现象，从而在计算机中模拟并呈现可以“以假乱真”的真实世界。我尤其感兴趣于其中渲染的部分。</p>
+<p>在大二下学期，我联系了lingqi在国内的合作者，南开大学的王贝贝教授。在此期间我跟随老师完成</p>
+<p>但在实习期间，我也深深地感受到了自身的不足。图形学的核心问题源于工业界实际，学术界或许只是专注于某个很窄方向的某个具体问题，我很难从某一个具体的小问题对学科有全局的认识，在解决某一模型的现有问题时，其实更多时间是陷入到了具体的数学问题当中，“如有所立卓尔”。但我却渴望能够尽可能地从全局的角度、而非单单某个bsdf的研究出发，构建一些有价值、能够快速应用于工业的工作。从那时开始，我开始意识到，我更多是希望将自己定义为一个工程师，而不是一个研究者。</p>
+<p>而在如今的工业界，新人担任图形开发岗，做的往往只是调用图形API的工作。我希望在学术和工业之间寻找一个平衡，从而让我能以更全局的观点去了解整个学科。我也逐渐找到了自己的定位。</p>
+<p>在今年秋天，我联系了西交软院的郑帅老师，郑帅老师向我介绍了西交这边的图形相关工作，包括立足于实际生产需求的一些校企联合的课题，同时这样的需求也是从我本科期间接触的bsdf出发。 而在研究生期间，我也很希望可以在软院这边从实际的项目课题出发，以一个不同的身份。</p>
+</li>
+<li>
+<p>项目和科创：具体实践</p>
+<p>从大二开始，我也尝试将自己所学落实到实际当中，从一些小项目出发，尝试构建一个完善产品项目的“最小闭环”。ARClip实现了快速跨平台一键互联，同时也结合物联网和数字人概念完成了一些有趣的功能。我将其与一些显著性检测的开源算法项目相结合，独立完成了ARClip的Flask后端、API测试和移动客户端，从人、物、场景三个角度将现实世界中的事物投入到虚拟世界当中。项目</p>
+</li>
+<li>
+<p>社群维护：希望成为一个supportive的人</p>
+</li>
+</ol>
+<p>更加supportive的人</p>
+</li>
+<li>
+<p>读研后的计划和大蒜</p>
+</li>
+</ol>
+<p>Eric Heitz在2014年的understanding paper（<a href="https://jcgt.org/published/0003/02/03/paper.pdf">链接</a>）提出了对smith G term新的理解，同时也介绍了对于Smith模型的拓展（Smith Joint Masking-Shadowing Function），引入了对Shadowing和Masking的相关性的考虑，是Multiple-Scattering的基础性工作。我复现了GGX、Beckmann两种符合shape-invariant的NDF，可以看到long-tail的区别；同时也展示了Shadowing和Masking的相关性的影响。我对不同roughness进行了讨论，复现在mitsuba框架上进行，下图是当时组会时展示的复现结果：</p>
+<p>Eric Heitz将表面建模与体积理解相结合，在2016年的<em>Multiple-Scattering Microfacet BSDFs with the Smith Model</em>中提出了随机高度场的随机游走，开辟了Microfacet的新方向。我对论文进行了基本的复现。由于离线渲染基本都是C++实现，为了方便之后的复现，使用C++调用Python中matplotlib进行了曲线的描绘，从而验证了复现的正确性，并将其作为后续工作的reference进行考虑。</p>
+<p>（Mitsuba0.6是学术界普遍认可的离线渲染框架，相比于现在的主流引擎或渲染器没有那么多trick，符合离线渲染基本要求，但由于其版本的老旧，以及离线渲染本身在结果正确性上的特点和要求，常常需要在渲染器实现的基础上额外进行实现和可视化，从而得到一些量化信息进行验证）</p>
+<p>另一篇文章Additional Progress Towards the Unification of Microfacet and Microflake Theories则在Heitz16的基础上进一步研究与探索rough-surface与体积散射的一致性，将材质的表面建模与体积建模相统一。后续的一些工作则更多关注于Position-Free的方法，2022年的Bitterli在Position-Free Integral从积分的角度对整个随机游走流程进行了简化。但他并没有给出对于采样方法的描述，对于一个完整的BSDF而言是有缺失的。</p>
+<p>Bitterli22中，我主要对其工作的采样方法进行了探索，并对其论文进行了分析和复现。需要承认的是这个工作我没有完全实现。</p>
+
+</main>
+
+
+<nav class="post-nav">
+  <span class="nav-next"></span>
+  &hercon;
+  <span class="nav-prev"><a href="/posts/2022-02-22-graphic-bookmark/" title=>图形学习总结&amp;导航（个人向）</a> &rarr;</span>
+</nav>
+
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="indevn/webify-page"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+  <footer>
+  <script defer src="//yihui.org/js/math-code.js"></script>
+<script defer src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script defer src="//yihui.org/js/center-img.js"></script>
+
+
+  
+  <hr/>
+  © <a href="https://indevn.com">indevn</a> 2016 &ndash; 2023 | <a href="https://github.com/indevn">Github</a> | <a href="https://beian.miit.gov.cn/">陕ICP备2022000698号</a>
+  
+  </footer>
+  </body>
+</html>
+

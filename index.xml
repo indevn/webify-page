@@ -12,7 +12,7 @@
       <pubDate>Thu, 21 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>/posts/2022-07-21-primary-microfacet/</guid>
-      <description>目前的公式渲染似乎出了些奇怪的问题，可以先看我先前做的PPT: [Heitz14]Microfacet Models（密码：1234）。
+      <description>改公式渲染太痛苦了，可以先看我先前做的PPT: [Heitz14]Microfacet Models（密码：1234）。
 这个笔记原本是对浅墨PBR白皮书、闫老师GAMES202、Heitz14年的文章的总结，这里推荐一下我当时参考的内容：
 PBR-White-Paper
 [Hetiz14]Understanding the Masking-Shadowing Function in Microfacet-Based BRDF
@@ -101,7 +101,7 @@ Monte Carlo based methods</description>
       
       <guid>/posts/2022-02-22-graphic-bookmark/</guid>
       <description>这原是我在今年2月建的一个repo：awesome-graphics-cn，旨在维护一个公共的图形学收藏夹。
-奈何这学科博大精深，一方面是没人给这repo contribute（这个是关键），另一方面是由于学科太广内容太多兼之我也刚入门，分类上实在不好维护，后来就处于摆烂状态。
+奈何这学科博大精深，一方面是没人给这repo contribute，另一方面是由于学科太广内容太多兼之我也刚入门，分类上实在不好维护，后来就处于摆烂状态。
 就当自己的收藏夹好了，按自己的兴趣随便收藏一些觉得有用的内容，努力做成综述形式的成体系化的东西。一步一个脚印，也就当是个人学习的一个记录。
 不得不感慨，当初有这时间真的不如做点有价值的事情。
 基本介绍与学习方向 数学在计算机图形学中的应用 by 刘利刚 什么是计算机图形学? by 刘利刚 如何自学《计算机图形学》&amp;amp; C++面向对象编程？ by 刘利刚 科研论文如何想到不错的 idea？ by 王嘉平 专题资源（专栏/博客为主） 工程综合相关
@@ -125,21 +125,18 @@ PBR-White-Paper
     </item>
     
     <item>
-      <title>关于</title>
+      <title>About</title>
       <link>/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/about/</guid>
-      <description>你好，世界 👋 我是一名大三本科生，目前就读于西安电子科技大学。
-最近在学习有关图形学渲染方面的知识，对音乐剧、动漫也很感兴趣。希望能够在这里分享一些自己看过的论文、自己学到的东西，以及自己的生活。
+      <description>你好，世界 👋 我是一个平凡的本科生，目前就读于西安电子科技大学。
+本科就读于通信工程学院，学的都是和通信有关的内容，但在大一由于个人兴趣接触了GAMES系列课程，学习了一些有关图形学渲染方面的知识。后来也跟着王贝贝老师，对图形渲染有了大致的了解。
+除此之外，我对音乐剧、动漫也感兴趣。
+我会在这里分享一些自己看过的论文、学到的东西，同时也会分享自己的生活。
 有任何问题也很欢迎联系我的邮箱：indevn@outlook.com
-如果网站加载有些慢/提示证书不安全，可能是我引入了外部的js的缘故，后者服务于文章的公式渲染，但目前似乎有些问题。会在后续进行修复。
 友情链接 这里是我的一些朋友的网站：
-t4rn
-Wings
-康师傅
-PATCH
-书名号</description>
+t4rn Wings 康师傅 PATCH 书名号</description>
     </item>
     
     <item>
